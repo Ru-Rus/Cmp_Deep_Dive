@@ -5,7 +5,7 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './control.component.html',
-  styleUrl: './control.component.css'
+  styleUrls: ['./control.component.css', './control.component.scss' ]
 })
 export class ControlComponent {
   label = input.required <string>();
