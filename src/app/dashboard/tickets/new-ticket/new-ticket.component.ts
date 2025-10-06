@@ -1,22 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, viewChild, ViewChild } from "@angular/core";
 import { ButtonComponent } from "../../../shared/button/button.component";
 import { ControlComponent } from "../../../shared/control/control.component";
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-new-ticket',
+  selector: "app-new-ticket",
   standalone: true,
   imports: [ButtonComponent, ControlComponent, FormsModule],
-  templateUrl: './new-ticket.component.html',
-  styleUrl: './new-ticket.component.css',
-  host:{
-    class: 'control'
-  }
+  templateUrl: "./new-ticket.component.html",
+  styleUrl: "./new-ticket.component.css",
+  host: {
+    class: "control",
+  },
 })
 export class NewTicketComponent {
-  onSubmit(title:string, text:string, form:HTMLFormElement){
+  //@ViewChild("formElement") private form?: ElementRef<HTMLFormElement>;
+  private form = viewChild.required<ElementRef<HTMLFormElement>>('formElement');
+  onSubmit(title: string, text: string) {
     console.log(title);
     console.log(text);
-    form.reset();
+    // this.form?.nativeElement.reset();
+    this.form()?.nativeElement.reset();
   }
 }
