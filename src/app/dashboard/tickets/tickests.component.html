@@ -1,9 +1,9 @@
 <div>
     <ul>
         <!-- for is only in angular 17up-->
-        @for (index of ticket; track index.id) {
+        @for (index of tickets; track index.id) {
             <li>
-                <app-ticket [data]="index"/> 
+                <app-ticket [data]="index" (close)="onCloseTicket(index.id)"/> 
                 <!-- {{ $first | $last | $odd | $even | $count}} -->
             </li>
         }

@@ -13,7 +13,7 @@ import { TicketComponent } from "./ticket/ticket.component";
   styleUrls: ["./tickests.component.css", "./tickets.component.scss"],
 })
 export class TickestsComponent {
-  ticket: interfaceTicket[] = [];
+  tickets: interfaceTicket[] = [];
 
   onAdd(ticketData:{title: string; text: string} ){
 
@@ -24,7 +24,16 @@ export class TickestsComponent {
         status: 'open'
     }
 
-    this.ticket.push(ticket);
+    this.tickets.push(ticket);
 
+  }
+
+  onCloseTicket(id:string){
+    this.tickets = this.tickets.map((ticket) =>{
+      if(ticket.id === id){
+        return {...ticket, status:'close'}
+      }
+      return ticket
+    });
   }
 }
