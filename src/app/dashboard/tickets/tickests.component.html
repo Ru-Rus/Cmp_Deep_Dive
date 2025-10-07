@@ -1,1 +1,31 @@
-<app-new-ticket />
+<div>
+    <ul>
+        <!-- for is only in angular 17up-->
+        @for (index of ticket; track index.id) {
+            <li>
+                <app-ticket [data]="index"/> 
+                <!-- {{ $first | $last | $odd | $even | $count}} -->
+            </li>
+        }
+        @empty {
+            <p> NO Tickets <br>
+                Available. </p>
+        }
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="new-ticket">
+<app-new-ticket (add)="onAdd($event)"/>
+</div>
+

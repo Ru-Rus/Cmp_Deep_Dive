@@ -1,13 +1,30 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { NewTicketComponent } from "./new-ticket/new-ticket.component";
+import { interfaceTicket } from "./ticket.model";
+import { Title } from "@angular/platform-browser";
+import { tick } from "@angular/core/testing";
+import { TicketComponent } from "./ticket/ticket.component";
 
 @Component({
-  selector: 'app-tickests',
+  selector: "app-tickests",
   standalone: true,
-  imports: [NewTicketComponent],
-  templateUrl: './tickests.component.html',
-  styleUrls: ['./tickests.component.css', './tickets.component.scss']
+  imports: [NewTicketComponent, TicketComponent],
+  templateUrl: "./tickests.component.html",
+  styleUrls: ["./tickests.component.css", "./tickets.component.scss"],
 })
 export class TickestsComponent {
+  ticket: interfaceTicket[] = [];
 
+  onAdd(ticketData:{title: string; text: string} ){
+
+    const ticket: interfaceTicket ={
+        title:ticketData.title,
+        request:ticketData.text,
+        id: 'qwertyuio' + Math.random().toString() + 'fgnjmk,l',
+        status: 'open'
+    }
+
+    this.ticket.push(ticket);
+
+  }
 }
